@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kandabhaji-PF</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-2">Zero-Shot Radar Localisation in Overhead Imagery</h1>
+      <p class="subtitle is-5" style="margin-top:.6rem">Kandabhaji-PF</p>
+      <p class="is-size-6">
+        <span class="author-block">Shaunak Kolhe</span>,
+        <span class="author-block">TODO co-authors</span>
+      </p>
+      <p class="is-size-6 has-text-grey">Texas A&amp;M University</p>
+      <div class="buttons is-centered" style="margin-top:1.1rem">
+        <a class="button is-dark is-rounded" href="#"><span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span></a>
+        <a class="button is-dark is-rounded" href="#"><span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span></a>
+        <a class="button is-dark is-rounded" href="#"><span class="icon"><i class="fab fa-github"></i></span><span>Code</span></a>
+      </div>
+      <p class="is-size-7 has-text-grey">Code release is pending review.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HERO VIDEO ---------------------------------------------------------- -->
+<section class="section" style="padding-top:0">
+  <div class="container is-max-desktop has-text-centered">
+    <video id="hero" autoplay muted loop playsinline width="62%">
+      <source src="./videos/hero.mp4" type="video/mp4">
+    </video>
+    <p class="caption">
+      A radar sweep placed at ground truth on a fixed satellite tile, frame after
+      frame. Nothing is fitted per frame: the structure the radar returns stays
+      registered to the structure in the image because both depict the same thing
+      &mdash; where the vertical structure is.
+    </p>
+  </div>
+</section>
+
+<!-- ABSTRACT ------------------------------------------------------------ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Abstract</h2>
+    <div class="content has-text-justified">
+      <p>
+        Localising a ground vehicle against public overhead imagery is attractive
+        because the map is free, global and already surveyed, but the sensor and
+        the map are captured years apart, in different seasons, by different
+        instruments. We match scanning radar to satellite imagery in a shared
+        learnt representation: a radar encoder pretrained by masked reconstruction
+        is aligned by a contrastive objective to frozen self-supervised features
+        of the orthophoto on a common 4.8&nbsp;m metric grid, with a
+        distinctiveness head that down-weights cells whose content the sweep does
+        not determine. Because the model ranks candidate poses rather than
+        regressing one, the estimator is a particle filter. We hold out whole
+        datasets rather than splitting them geographically, so no sequence, route
+        or map from an evaluated dataset is seen in training.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS ------------------------------------------------------------- -->
+<section class="section" style="padding-top:0">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Results</h2>
+    <p class="content has-text-justified">
+      Ground truth in red, the particle-filter estimate in green, and the
+      scan-matching odometry the filter propagates on as a dashed blue line. The
+      odometry wanders hundreds of metres on every route; the estimate stays on
+      ground truth. None of these routes, and no map covering them, appears
+      anywhere in training.
+    </p>
+    <div class="columns is-multiline">
+      <div class="column is-half">
+        <video autoplay muted loop playsinline width="100%">
+          <source src="./videos/hercules_sportscomplex.mp4" type="video/mp4">
+        </video>
+        <p class="caption">HeRCULES SportsComplex01 &mdash; held out. ATE 3.33&nbsp;m.</p>
+      </div>
+      <!-- TODO: Boreas, Oxford, MulRan, GOd, FoMo clips -->
+    </div>
+  </div>
+</section>
+
+<!-- POSTERIOR ----------------------------------------------------------- -->
+<section class="section" style="padding-top:0">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">What the filter is doing</h2>
+    <p class="content has-text-justified">
+      The per-frame error says how far the estimate is wrong, not what shape the
+      posterior has. Here the particle cloud is drawn on the imagery it is being
+      scored against, so the failure modes become legible: an along-track
+      ambiguity is a cloud smeared down the road, and a loss of lock is a cloud
+      that contracts around the wrong mode.
+    </p>
+    <!-- TODO: particle-cloud clip -->
+  </div>
+</section>
+
+<!-- BIBTEX -------------------------------------------------------------- -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+<pre><code>@inproceedings{TODO,
+  title     = {Zero-Shot Radar Localisation in Overhead Imagery},
+  author    = {TODO},
+  booktitle = {TODO},
+  year      = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container has-text-centered content is-size-7">
+    <p>
+      This page uses the
+      <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+      project-page template, licensed
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
