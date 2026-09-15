@@ -13,8 +13,7 @@
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop has-text-centered">
-      <h1 class="title is-2">Zero-Shot Radar Localisation in Overhead Imagery</h1>
-      <p class="subtitle is-5" style="margin-top:.6rem">Kandabhaji-PF</p>
+      <h1 class="title is-2">RadGeoLoc: Radar Geolocalization via Particle Filtering</h1>
       <p class="is-size-6">
         <span class="author-block">Anonymous</span>,
         <span class="author-block">TODO co-authors</span>
@@ -51,18 +50,7 @@
     <h2 class="title is-3 has-text-centered">Abstract</h2>
     <div class="content has-text-justified">
       <p>
-        Localising a ground vehicle against public overhead imagery is attractive
-        because the map is free, global and already surveyed, but the sensor and
-        the map are captured years apart, in different seasons, by different
-        instruments. We match scanning radar to satellite imagery in a shared
-        learnt representation: a radar encoder pretrained by masked reconstruction
-        is aligned by a contrastive objective to frozen self-supervised features
-        of the orthophoto on a common 4.8&nbsp;m metric grid, with a
-        distinctiveness head that down-weights cells whose content the sweep does
-        not determine. Because the model ranks candidate poses rather than
-        regressing one, the estimator is a particle filter. We hold out whole
-        datasets rather than splitting them geographically, so no sequence, route
-        or map from an evaluated dataset is seen in training.
+ In real-time autonomous field applications, GNSS is often unreliable and inaccurate. A possible solution is localizing against a prebuilt map like a satellite image, as it is georeferenced and already surveyed. In this work, we localize a spinning radar measurement against overhead RGB imagery with a learned observation model. We use a radar representation pretrained by masked reconstruction and align it to satellite-pretrained features. A particle filter propagated by radar odometry proposes candidate poses, and our observation model provides a likelihood over these poses. We evaluate our method over 31 distinct routes, over 8 datasets spanning both urban and offroad conditions using only ground radar and a coarse local prior. We also show the robustness over changing weather using repeated traversals over the same route over 13 months, in both urban and offroad conditions. 
       </p>
     </div>
   </div>
